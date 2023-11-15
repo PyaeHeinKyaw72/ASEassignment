@@ -17,28 +17,36 @@ namespace ASEassignment
         ///  For moving pen location
         MoveTo,
 
-        /// Clear the drawing.
+        /// Clear the drawing
         Clear,
 
-        /// Reset the position to the pen.
+        /// Reset the position to the pen
         Reset,
 
+        /// To run a program
         Run,
+
+        /// Draw a rectangle with specified width and height
+        Rectangle,
 
         /// For invalid command
         Invalid
     }
 
-    /// Parses user input to determine the command and its parameters.
+    /// Parses user input to determine the command and its parameters
     public class CommandParser
     {
         /// <param name="input">The input command string.</param>
         /// <param name="x">The X-coordinate value.</param>
         /// <param name="y">The Y-coordinate value.</param>
-        public static commands parseCommand(string input, out int x, out int y)
+        /// <param name="width">The width value </param>
+        /// <param name="height">The height value.</param>
+        public static commands parseCommand(string input, out int x, out int y,out int width, out int height)
         {
             x = 0;
             y = 0;
+            width = 0;
+            height = 0;
 
             string[] command = input.ToLower().Split(' ', ',');
 
@@ -59,6 +67,13 @@ namespace ASEassignment
                         if (command.Length == 3 && int.TryParse(command[1], out x) && int.TryParse(command[2], out y))
                         {
                             return commands.MoveTo;
+                        }
+                        break;
+
+                    case "rectangle":
+                        if (command.Length == 3 && int.TryParse(command[1], out width) && int.TryParse(command[2], out height))
+                        {
+                            return commands.Rectangle;
                         }
                         break;
 

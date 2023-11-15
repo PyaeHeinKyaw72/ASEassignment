@@ -30,7 +30,7 @@ namespace ASEassignment
                 return;
             }
 
-            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y);
+            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height);
             try
             {
                 switch (CommandType)
@@ -41,6 +41,10 @@ namespace ASEassignment
 
                     case commands.MoveTo:
                         drawingTool.Move(x, y);
+                        break;
+
+                    case commands.Rectangle:
+                        drawingTool.Rectangle(width, height);
                         break;
 
                     case commands.Clear:

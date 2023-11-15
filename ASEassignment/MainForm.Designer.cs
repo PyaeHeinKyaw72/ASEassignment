@@ -38,7 +38,7 @@
             // runButton
             // 
             this.runButton.BackColor = System.Drawing.Color.Transparent;
-            this.runButton.Location = new System.Drawing.Point(79, 419);
+            this.runButton.Location = new System.Drawing.Point(34, 376);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(99, 34);
             this.runButton.TabIndex = 1;
@@ -48,7 +48,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(203, 419);
+            this.saveButton.Location = new System.Drawing.Point(34, 422);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(99, 37);
             this.saveButton.TabIndex = 2;
@@ -75,7 +75,7 @@
             // comandBox
             // 
             this.comandBox.BackColor = System.Drawing.SystemColors.Window;
-            this.comandBox.Location = new System.Drawing.Point(79, 375);
+            this.comandBox.Location = new System.Drawing.Point(149, 382);
             this.comandBox.Name = "comandBox";
             this.comandBox.Size = new System.Drawing.Size(223, 22);
             this.comandBox.TabIndex = 6;
@@ -85,7 +85,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 467);
+            this.ClientSize = new System.Drawing.Size(881, 481);
             this.Controls.Add(this.comandBox);
             this.Controls.Add(this.programBox);
             this.Controls.Add(this.drawingPanel);
