@@ -23,7 +23,7 @@ namespace ASEassignment
 
             drawingTool = new DrawingTool(drawingPanel);
             drawingPanel.Paint += drawingPanel_Paint;
-            command = new Command(drawingTool);
+            command = new Command(drawingTool, programBox);
         }
 
         /// The Paint event of the drawing panel
@@ -44,6 +44,11 @@ namespace ASEassignment
                 // Run the command with the entered text
                 command.Run(comandBox.Text);
             }
+        }
+
+        private void runButton_Click(object sender, EventArgs e)
+        {
+            command.RunProgram(programBox.Text);
         }
     }
 }

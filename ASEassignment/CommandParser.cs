@@ -23,6 +23,8 @@ namespace ASEassignment
         /// Reset the position to the pen.
         Reset,
 
+        Run,
+
         /// For invalid command
         Invalid
     }
@@ -73,6 +75,9 @@ namespace ASEassignment
                             return commands.Reset;
                         }
                         break;
+
+                    case "run":
+                        return commands.Run;
                 }
             }
 

@@ -71,5 +71,10 @@ namespace ASEassignment
         {
             penLocation = new Point(0, 0);
         }
+
+        public void RefreshPanel()
+        {
+            drawingPanel.Refresh();
+        }
     }
 }

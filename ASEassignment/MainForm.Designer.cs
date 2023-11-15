@@ -44,6 +44,7 @@
             this.runButton.TabIndex = 1;
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = false;
+            this.runButton.Click += new System.EventHandler(this.runButton_Click);
             // 
             // saveButton
             // 

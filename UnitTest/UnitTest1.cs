@@ -17,7 +17,8 @@ namespace UnitTest
         {
             // Arrange
             DrawingTool drawingTool = new DrawingTool(new Panel());
-            Command command = new Command(drawingTool);
+            RichTextBox programBox = new RichTextBox();
+            Command command = new Command(drawingTool, programBox);
 
             // Act
             command.Run("drawto 30,40");
@@ -35,7 +36,8 @@ namespace UnitTest
         {
             // Arrange
             DrawingTool drawingTool = new DrawingTool(new Panel());
-            Command command = new Command(drawingTool);
+            RichTextBox programBox = new RichTextBox();
+            Command command = new Command(drawingTool, programBox);
             string validCommand = "drawto 10,20";
 
             // Act and Assert
@@ -61,7 +63,8 @@ namespace UnitTest
         {
             // Arrange
             DrawingTool drawingTool = new DrawingTool(new Panel());
-            Command command = new Command(drawingTool);
+            RichTextBox programBox = new RichTextBox();
+            Command command = new Command(drawingTool, programBox);
             string invalidCommand = "drto 10,20";
 
             // Act and Assert

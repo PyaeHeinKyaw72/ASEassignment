@@ -11,17 +11,25 @@ namespace ASEassignment
     public class Command
     {
         private DrawingTool drawingTool;
+        private RichTextBox programBox;
 
         /// <param name="drawingTool">The drawing tool to be used for executing commands</param>
-        public Command(DrawingTool drawingTool)
+        public Command(DrawingTool drawingTool, RichTextBox programBox)
         {
             this.drawingTool = drawingTool;
+            this.programBox = programBox;
         }
 
         /// <summary> Executes a command based on the inputed text </summary>
         /// <param name="commandText">The command text to be executed</param>
         public void Run(string commandText)
         {
+            if (commandText.Trim().ToLower() == "run")
+            {
+                RunProgram(programBox.Text);
+                return;
+            }
+
             commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y);
             try
             {
@@ -51,6 +59,20 @@ namespace ASEassignment
             {
                 MessageBox.Show("Invalid command or parameter!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public void RunProgram(string programText)
+        {
+            // Split the programText into individual commands
+            string[] commands = programText.Split('\n', '\r');
+
+            // Execute each command
+            foreach (string commandLine in commands)
+            {
+                Run(commandLine);
+            }
+
+            // Refresh the panel to update the drawings
+            drawingTool.RefreshPanel();
         }
     }
 }
