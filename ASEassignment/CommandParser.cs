@@ -14,8 +14,14 @@ namespace ASEassignment
         /// Command to draw a line
         DrawTo,
         
-        ///  For oving pen location
+        ///  For moving pen location
         MoveTo,
+
+        /// Clear the drawing.
+        Clear,
+
+        /// Reset the position to the pen.
+        Reset,
 
         /// For invalid command
         Invalid
@@ -51,6 +57,20 @@ namespace ASEassignment
                         if (command.Length == 3 && int.TryParse(command[1], out x) && int.TryParse(command[2], out y))
                         {
                             return commands.MoveTo;
+                        }
+                        break;
+
+                    case "clear":
+                        if (command.Length == 1)
+                        {
+                            return commands.Clear;
+                        }
+                        break;
+
+                    case "reset":
+                        if (command.Length == 1)
+                        {
+                            return commands.Reset;
                         }
                         break;
                 }

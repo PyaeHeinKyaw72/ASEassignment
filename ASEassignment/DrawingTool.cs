@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ASEassignment
 {
-    /// drawing related stuff for the panel
+    /// <summary> drawing related stuff for the panel </summary>
     public class DrawingTool
     {
         public Point penLocation = new Point(0, 0);
@@ -53,6 +53,23 @@ namespace ASEassignment
                     graphics.DrawLine(pen, linePoints[i], linePoints[i + 1]);
                 }
             }
+        }
+
+        /// <summary>
+        /// Clears the panel
+        /// </summary>
+        public void Clear()
+        {
+            linePoints.Clear();
+            drawingPanel.Invalidate();
+        }
+
+        /// <summary>
+        /// Resets the pen position
+        /// </summary>
+        public void ResetPosition()
+        {
+            penLocation = new Point(0, 0);
         }
     }
 }

@@ -35,6 +35,14 @@ namespace ASEassignment
                         drawingTool.Move(x, y);
                         break;
 
+                    case commands.Clear:
+                        drawingTool.Clear();
+                        break;
+
+                    case commands.Reset:
+                        drawingTool.ResetPosition();
+                        break;
+
                     case commands.Invalid:
                         throw new InvalidOperationException();
                 }
