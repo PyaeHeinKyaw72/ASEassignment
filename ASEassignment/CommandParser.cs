@@ -11,10 +11,13 @@ namespace ASEassignment
     /// Represents a set of commands for the drawing tool
     public enum commands
     {
-        /// Command to draw to a specific position
+        /// Command to draw a line
         DrawTo,
+        
+        ///  For oving pen location
+        MoveTo,
 
-        /// Represents an invalid command
+        /// For invalid command
         Invalid
     }
 
@@ -41,6 +44,13 @@ namespace ASEassignment
                         if (command.Length == 3 && int.TryParse(command[1], out x) && int.TryParse(command[2], out y))
                         {
                             return commands.DrawTo;
+                        }
+                        break;
+
+                    case "moveto":
+                        if (command.Length == 3 && int.TryParse(command[1], out x) && int.TryParse(command[2], out y))
+                        {
+                            return commands.MoveTo;
                         }
                         break;
                 }

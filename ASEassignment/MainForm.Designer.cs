@@ -61,6 +61,7 @@
             this.drawingPanel.Name = "drawingPanel";
             this.drawingPanel.Size = new System.Drawing.Size(394, 408);
             this.drawingPanel.TabIndex = 4;
+            this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.drawingPanel_Paint);
             // 
             // programBox
             // 
@@ -74,7 +75,6 @@
             // 
             this.comandBox.BackColor = System.Drawing.SystemColors.Window;
             this.comandBox.Location = new System.Drawing.Point(79, 375);
-            this.comandBox.Multiline = true;
             this.comandBox.Name = "comandBox";
             this.comandBox.Size = new System.Drawing.Size(223, 22);
             this.comandBox.TabIndex = 6;
@@ -92,6 +92,7 @@
             this.Controls.Add(this.runButton);
             this.Name = "mainForm";
             this.Text = "GPL Application";
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

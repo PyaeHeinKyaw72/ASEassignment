@@ -21,7 +21,7 @@ namespace ASEassignment
             drawingPanel = panel;
         }
 
-        /// <summary> Draws a line from the current pen location to the specified location </summary>
+        /// <summary> Drawing a line (drawTo) </summary>
         /// <param name="x"> The x-coordinate </param>
         /// <param name="y"> The y-coordinate </param>
         public void Draw(int x, int y)
@@ -32,6 +32,14 @@ namespace ASEassignment
             
             drawingPanel.Invalidate(); /// Invalidate the panel to trigger a repaint
             penLocation = new Point(x, y); /// Update the pen location to the specified coordinates
+        }
+
+        /// <summary> Move pen location (moveTo) </summary>
+        /// <param name="x"> The x-coordinate </param>
+        /// <param name="y"> The y-coordinate </param>
+        public void Move(int x, int y)
+        {
+            penLocation = new Point(x, y);
         }
 
         /// <param name="graphics">The graphics object to paint </param>

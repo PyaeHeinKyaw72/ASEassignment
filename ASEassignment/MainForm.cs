@@ -36,7 +36,7 @@ namespace ASEassignment
         private void comandBox_KeyDown(object sender, KeyEventArgs e)
         {
             // Get the trimmed text from the command box
-            string commandText = comandBox.Text.Trim();
+            string commandText = comandBox.Text.Trim().ToLower();
 
             // Check if the Enter key is pressed
             if (e.KeyCode == Keys.Enter)
@@ -44,6 +44,11 @@ namespace ASEassignment
                 // Run the command with the entered text
                 command.Run(comandBox.Text);
             }
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
