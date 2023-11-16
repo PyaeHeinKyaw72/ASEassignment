@@ -29,6 +29,12 @@ namespace ASEassignment
         /// Draw a rectangle with specified width and height
         Rectangle,
 
+        /// For changing pen color
+        PenColor,
+
+        /// 
+        ColorFill,
+
         /// For invalid command
         Invalid
     }
@@ -41,12 +47,16 @@ namespace ASEassignment
         /// <param name="y">The Y-coordinate value.</param>
         /// <param name="width">The width value </param>
         /// <param name="height">The height value.</param>
-        public static commands parseCommand(string input, out int x, out int y,out int width, out int height)
+        /// <param name="penColor">The color value.</param>
+        /// <param name="colorFillEnabled">The fill status.</param>
+        public static commands parseCommand(string input, out int x, out int y,out int width, out int height, out Color penColor, out bool colorFillEnabled)
         {
             x = 0;
             y = 0;
             width = 0;
             height = 0;
+            penColor = Color.Black;
+            colorFillEnabled = false;
 
             string[] command = input.ToLower().Split(' ', ',');
 
@@ -74,6 +84,32 @@ namespace ASEassignment
                         if (command.Length == 3 && int.TryParse(command[1], out width) && int.TryParse(command[2], out height))
                         {
                             return commands.Rectangle;
+                        }
+                        break;
+
+                    case "pen":
+                        if (command.Length == 2)
+                        {
+                            string color = command[1].ToLower();
+                            string[] colorList = { "black", "red", "green", "blue", "yellow", "pink", "white" };
+
+                            if (colorList.Contains(color))
+                            {
+                                penColor = Color.FromName(color);
+                                return commands.PenColor;
+                            }
+                        }
+                        break;
+
+                    case "fill":
+                        if (command.Length == 2)
+                        {
+                            string fillStatus = command[1].ToLower();
+                            if (fillStatus == "on" || fillStatus == "off")
+                            {
+                                colorFillEnabled = fillStatus == "on";
+                                return commands.ColorFill;
+                            }
                         }
                         break;
 

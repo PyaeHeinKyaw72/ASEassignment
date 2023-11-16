@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace ASEassignment
                 return;
             }
 
-            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height);
+            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height, out Color penColor, out bool colorFillEnabled);
             try
             {
                 switch (CommandType)
@@ -45,6 +46,13 @@ namespace ASEassignment
 
                     case commands.Rectangle:
                         drawingTool.Rectangle(width, height);
+                        break;
+
+                    case commands.PenColor:
+                        drawingTool.SetPenColor(penColor);
+                        break;
+                    case commands.ColorFill:
+                        drawingTool.SetColorFill(colorFillEnabled);
                         break;
 
                     case commands.Clear:

@@ -15,9 +15,13 @@ namespace ASEassignment
         private Rectangle rectangle;
 
         /// <param name="rectangle">The rectangle to represent the shape</param>
-        public RectangleShape(Rectangle rectangle)
+        /// // <param name="color">The color of the shape</param>
+        /// <param name="colorFilled">Whether the shape is filled with color</param>
+        public RectangleShape(Rectangle rectangle, Color color, bool colorFilled)
         {
             this.rectangle = rectangle;
+            this.color = color;
+            this.colorFilled = colorFilled;
         }
 
         /// <summary>
@@ -26,8 +30,15 @@ namespace ASEassignment
         /// <param name="graphics">The graphics object used for drawing</param>
         public override void Draw(Graphics graphics)
         {
-            using (var pen = new Pen(Color.Red, 3))
+            using (var pen = new Pen(color, 3))
             {
+                if (colorFilled)
+                {
+                    using (var brush = new SolidBrush(color))
+                    {
+                        graphics.FillRectangle(brush, rectangle);
+                    }
+                }
                 graphics.DrawRectangle(pen, rectangle);
             }
         }

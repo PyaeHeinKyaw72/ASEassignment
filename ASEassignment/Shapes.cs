@@ -49,6 +49,16 @@ namespace ASEassignment
     /// </summary>
     public abstract class Shape
     {
+        /// <summary>
+        /// Gets or sets the color of the shape.
+        /// </summary>
+        public Color color;
+
+        /// <summary>
+        /// Gets or sets whether the shape is filled with color.
+        /// </summary>
+        public bool colorFilled;
         public abstract void Draw(Graphics graphics);
+
     }
 }

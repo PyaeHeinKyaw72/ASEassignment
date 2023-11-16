@@ -19,6 +19,15 @@ namespace ASEassignment
         /// </summary>
         public Shapes Shapes { get; } = new Shapes();
 
+        /// <summary>
+        /// Gets or sets a value indicating whether color filling is enabled.
+        /// </summary>
+        public bool ColorFillEnabled { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets the color used for drawing.
+        /// </summary>
+        public Color PenColor { get; set; } = Color.Black;
 
         /// <param name="panel">The panel to draw on.</param>
         public DrawingTool(Panel panel)
@@ -51,7 +60,7 @@ namespace ASEassignment
         /// </summary>
         public void Paint(Graphics graphics)
         {
-            using (var pen = new Pen(Color.Black, 3))
+            using (var pen = new Pen(PenColor, 3))
             {
                 for (int i = 0; i < linePoints.Count - 1; i += 2)
                 {
@@ -81,13 +90,29 @@ namespace ASEassignment
         }
 
         /// <summary>
-        /// Draws a rectangle with the specified width and height.
+        /// Add a rectangle with specified width and height to the shape list to draw
         /// </summary>
         public void Rectangle(int width, int height)
         {
             Rectangle rectangle = new Rectangle(penLocation.X, penLocation.Y, width, height);
-            Shapes.AddShape(new RectangleShape(rectangle));
+            Shapes.AddShape(new RectangleShape(rectangle, PenColor, ColorFillEnabled));
             drawingPanel.Invalidate();
+        }
+
+        /// <summary>
+        /// Sets the drawing pen color
+        /// </summary>
+        public void SetPenColor(Color color)
+        {
+            PenColor = color;
+        }
+
+        /// <summary>
+        /// Sets the color fill status
+        /// </summary>
+        public void SetColorFill(bool isColorFillEnabled)
+        {
+            ColorFillEnabled = isColorFillEnabled;
         }
 
         public void RefreshPanel()
