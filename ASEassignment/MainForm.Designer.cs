@@ -29,67 +29,103 @@
         private void InitializeComponent()
         {
             this.runButton = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.syntaxButton = new System.Windows.Forms.Button();
             this.drawingPanel = new System.Windows.Forms.Panel();
             this.programBox = new System.Windows.Forms.RichTextBox();
             this.comandBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // runButton
             // 
-            this.runButton.BackColor = System.Drawing.Color.Transparent;
-            this.runButton.Location = new System.Drawing.Point(34, 376);
+            this.runButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.runButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.runButton.ForeColor = System.Drawing.Color.Black;
+            this.runButton.Location = new System.Drawing.Point(42, 425);
             this.runButton.Name = "runButton";
-            this.runButton.Size = new System.Drawing.Size(99, 34);
+            this.runButton.Size = new System.Drawing.Size(165, 38);
             this.runButton.TabIndex = 1;
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = false;
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
             // 
-            // saveButton
+            // syntaxButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(34, 422);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(99, 37);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Syntax";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.syntaxButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.syntaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.syntaxButton.Location = new System.Drawing.Point(202, 425);
+            this.syntaxButton.Name = "syntaxButton";
+            this.syntaxButton.Size = new System.Drawing.Size(176, 38);
+            this.syntaxButton.TabIndex = 2;
+            this.syntaxButton.Text = "Syntax";
+            this.syntaxButton.UseVisualStyleBackColor = false;
             // 
             // drawingPanel
             // 
-            this.drawingPanel.BackColor = System.Drawing.Color.DarkGray;
-            this.drawingPanel.Location = new System.Drawing.Point(436, 42);
+            this.drawingPanel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.drawingPanel.Location = new System.Drawing.Point(438, 32);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(394, 408);
+            this.drawingPanel.Size = new System.Drawing.Size(348, 409);
             this.drawingPanel.TabIndex = 4;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.drawingPanel_Paint);
             // 
             // programBox
             // 
-            this.programBox.Location = new System.Drawing.Point(34, 42);
+            this.programBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.programBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.programBox.ForeColor = System.Drawing.Color.Transparent;
+            this.programBox.Location = new System.Drawing.Point(42, 83);
             this.programBox.Name = "programBox";
-            this.programBox.Size = new System.Drawing.Size(338, 313);
+            this.programBox.Size = new System.Drawing.Size(338, 344);
             this.programBox.TabIndex = 5;
             this.programBox.Text = "";
+            this.programBox.ZoomFactor = 1.1F;
             // 
             // comandBox
             // 
             this.comandBox.BackColor = System.Drawing.SystemColors.Window;
-            this.comandBox.Location = new System.Drawing.Point(149, 382);
+            this.comandBox.Location = new System.Drawing.Point(438, 440);
             this.comandBox.Name = "comandBox";
-            this.comandBox.Size = new System.Drawing.Size(223, 22);
+            this.comandBox.Size = new System.Drawing.Size(348, 22);
             this.comandBox.TabIndex = 6;
             this.comandBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandBox_KeyDown);
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.ForeColor = System.Drawing.Color.Black;
+            this.saveButton.Location = new System.Drawing.Point(43, 36);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(89, 32);
+            this.saveButton.TabIndex = 8;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = false;
+            // 
+            // loadButton
+            // 
+            this.loadButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadButton.ForeColor = System.Drawing.Color.Black;
+            this.loadButton.Location = new System.Drawing.Point(127, 36);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(91, 32);
+            this.loadButton.TabIndex = 8;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = false;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 481);
-            this.Controls.Add(this.comandBox);
+            this.ClientSize = new System.Drawing.Size(850, 508);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.programBox);
-            this.Controls.Add(this.drawingPanel);
             this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.drawingPanel);
+            this.Controls.Add(this.comandBox);
+            this.Controls.Add(this.syntaxButton);
             this.Controls.Add(this.runButton);
             this.Name = "mainForm";
             this.Text = "GPL Application";
@@ -100,10 +136,12 @@
 
         #endregion
         private System.Windows.Forms.Button runButton;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button syntaxButton;
         private System.Windows.Forms.Panel drawingPanel;
         private System.Windows.Forms.RichTextBox programBox;
         private System.Windows.Forms.TextBox comandBox;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button loadButton;
     }
 }
 

@@ -29,6 +29,12 @@ namespace ASEassignment
         /// Draw a rectangle with specified width and height
         Rectangle,
 
+        /// Draw a circle with specified radius
+        Circle,
+
+        /// Draw a triangle with specified three points
+        Triangle,
+
         /// For changing pen color
         PenColor,
 
@@ -49,13 +55,14 @@ namespace ASEassignment
         /// <param name="height">The height value.</param>
         /// <param name="penColor">The color value.</param>
         /// <param name="colorFillEnabled">The fill status.</param>
-        public static commands parseCommand(string input, out int x, out int y,out int width, out int height, out Color penColor, out bool colorFillEnabled)
+        public static commands parseCommand(string input, out int x, out int y,out int width, out int height, out int radius, out Color penColor, out bool colorFillEnabled)
         {
             x = 0;
             y = 0;
             width = 0;
             height = 0;
-            penColor = Color.Black;
+            radius = 0;
+            penColor = Color.White;
             colorFillEnabled = false;
 
             string[] command = input.ToLower().Split(' ', ',');
@@ -84,6 +91,23 @@ namespace ASEassignment
                         if (command.Length == 3 && int.TryParse(command[1], out width) && int.TryParse(command[2], out height))
                         {
                             return commands.Rectangle;
+                        }
+                        break;
+
+                    case "circle":
+                        if (command.Length == 2 && int.TryParse(command[1], out radius))
+                        {
+                            return commands.Circle;
+                        }
+                        break;
+
+                    case "triangle":
+                        if (command.Length == 4 && int.TryParse(command[1], out int triangleBase) && int.TryParse(command[2], out int adj) && int.TryParse(command[3], out int hyp))
+                        {
+                            x = triangleBase;
+                            y = adj;
+                            width = hyp;
+                            return commands.Triangle;
                         }
                         break;
 

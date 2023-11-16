@@ -13,6 +13,7 @@ namespace ASEassignment
         public Point penLocation = new Point(0, 0);
         public List<Point> linePoints = new List<Point>();
         public Panel drawingPanel;
+        public TriangleShape triangle;
 
         /// <summary>
         /// Gets the collection of shapes drawn by the drawing tool.
@@ -27,7 +28,7 @@ namespace ASEassignment
         /// <summary>
         /// Gets or sets the color used for drawing.
         /// </summary>
-        public Color PenColor { get; set; } = Color.Black;
+        public Color PenColor { get; set; } = Color.White;
 
         /// <param name="panel">The panel to draw on.</param>
         public DrawingTool(Panel panel)
@@ -96,6 +97,36 @@ namespace ASEassignment
         {
             Rectangle rectangle = new Rectangle(penLocation.X, penLocation.Y, width, height);
             Shapes.AddShape(new RectangleShape(rectangle, PenColor, ColorFillEnabled));
+            drawingPanel.Invalidate();
+        }
+
+        /// <summary>
+        /// Add a circle with specified radius to the shape list to draw
+        /// </summary>
+        public void Circle(int radius)
+        {
+            Point center = penLocation;
+            Shapes.AddShape(new CircleShape(center, radius, PenColor, ColorFillEnabled));
+            drawingPanel.Invalidate();
+        }
+
+        /// <summary>
+        /// Draws a triangle with the specified base, adjacent, and hypotenuse.
+        /// </summary>
+        public void Triangle(int triangleBase, int adj, int hyp)
+        {
+            int x1 = penLocation.X;
+            int y1 = penLocation.Y;
+
+            int x2 = x1 + triangleBase;
+            int y2 = y1;
+
+            int x3 = x1 + adj;
+            int y3 = y1 - hyp;
+
+            triangle = new TriangleShape(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), PenColor, ColorFillEnabled);
+            Shapes.AddShape(triangle);
+
             drawingPanel.Invalidate();
         }
 
