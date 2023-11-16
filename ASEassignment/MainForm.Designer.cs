@@ -42,7 +42,7 @@
             this.runButton.BackColor = System.Drawing.SystemColors.Menu;
             this.runButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.runButton.ForeColor = System.Drawing.Color.Black;
-            this.runButton.Location = new System.Drawing.Point(42, 425);
+            this.runButton.Location = new System.Drawing.Point(42, 418);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(165, 38);
             this.runButton.TabIndex = 1;
@@ -54,38 +54,39 @@
             // 
             this.syntaxButton.BackColor = System.Drawing.SystemColors.Menu;
             this.syntaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.syntaxButton.Location = new System.Drawing.Point(202, 425);
+            this.syntaxButton.Location = new System.Drawing.Point(203, 418);
             this.syntaxButton.Name = "syntaxButton";
-            this.syntaxButton.Size = new System.Drawing.Size(176, 38);
+            this.syntaxButton.Size = new System.Drawing.Size(177, 38);
             this.syntaxButton.TabIndex = 2;
             this.syntaxButton.Text = "Syntax";
             this.syntaxButton.UseVisualStyleBackColor = false;
             // 
             // drawingPanel
             // 
-            this.drawingPanel.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.drawingPanel.Location = new System.Drawing.Point(438, 32);
+            this.drawingPanel.BackColor = System.Drawing.SystemColors.GrayText;
+            this.drawingPanel.ForeColor = System.Drawing.Color.Black;
+            this.drawingPanel.Location = new System.Drawing.Point(436, 42);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(348, 409);
+            this.drawingPanel.Size = new System.Drawing.Size(348, 392);
             this.drawingPanel.TabIndex = 4;
             this.drawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.drawingPanel_Paint);
             // 
             // programBox
             // 
-            this.programBox.BackColor = System.Drawing.SystemColors.InfoText;
-            this.programBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.programBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.programBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.programBox.ForeColor = System.Drawing.Color.Transparent;
             this.programBox.Location = new System.Drawing.Point(42, 83);
             this.programBox.Name = "programBox";
-            this.programBox.Size = new System.Drawing.Size(338, 344);
+            this.programBox.Size = new System.Drawing.Size(338, 336);
             this.programBox.TabIndex = 5;
             this.programBox.Text = "";
-            this.programBox.ZoomFactor = 1.1F;
+            this.programBox.ZoomFactor = 1.15F;
             // 
             // comandBox
             // 
             this.comandBox.BackColor = System.Drawing.SystemColors.Window;
-            this.comandBox.Location = new System.Drawing.Point(438, 440);
+            this.comandBox.Location = new System.Drawing.Point(436, 433);
             this.comandBox.Name = "comandBox";
             this.comandBox.Size = new System.Drawing.Size(348, 22);
             this.comandBox.TabIndex = 6;
@@ -102,6 +103,7 @@
             this.saveButton.TabIndex = 8;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // loadButton
             // 
@@ -114,11 +116,13 @@
             this.loadButton.TabIndex = 8;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = false;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(850, 508);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.programBox);
