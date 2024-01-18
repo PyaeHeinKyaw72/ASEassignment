@@ -50,6 +50,12 @@ namespace ASEassignment
         /// To end an 'if' condition.
         EndIf,
 
+        /// To start a 'while' loop.
+        While,
+
+        /// To end a 'while' loop.
+        EndLoop,
+
         /// For invalid command
         Invalid
     }
@@ -76,7 +82,7 @@ namespace ASEassignment
         /// <param name="height">The height value.</param>
         /// <param name="penColor">The color value.</param>
         /// <param name="colorFillEnabled">The fill status.</param>
-        public static commands parseCommand(string input, out int x, out int y,out int width, out int height, out int radius, out Color penColor, out bool colorFillEnabled, out string variableName)
+        public static commands parseCommand(string input, out int x, out int y,out int width, out int height, out int radius,out Color penColor, out bool colorFillEnabled, out string variableName)
         {
             x = 0;
             y = 0;
@@ -237,6 +243,22 @@ namespace ASEassignment
                     case "endif":
                         condition = true;
                         return commands.EndIf;
+
+                    case "while":
+                        if (command.Length >= 4)
+                        {
+                            variableName = command[1].ToLower();
+                            return commands.While;
+                        }
+                        break;
+
+                    case "endloop":
+                        if (command.Length == 1)
+                        {
+                            condition = true;
+                            return commands.EndLoop;
+                        }
+                        break;
                 }
             }
 
@@ -249,4 +271,3 @@ namespace ASEassignment
         }
     }
 }
-

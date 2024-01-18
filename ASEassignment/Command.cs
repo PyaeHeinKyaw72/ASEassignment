@@ -13,6 +13,7 @@ namespace ASEassignment
     {
         private DrawingTool drawingTool;
         private RichTextBox programBox;
+        private bool inWhileBlock;
 
         /// <param name="drawingTool">The drawing tool to be used for executing commands</param>
         public Command(DrawingTool drawingTool, RichTextBox programBox)
@@ -80,6 +81,49 @@ namespace ASEassignment
                         break;
                     case commands.EndIf:
                         CommandParser.SetCondition(true);
+                        break;
+
+                    case commands.While:
+                        // Get the condition and loop start position
+                        bool whileCondition = CommandParser.EvaluateCondition(commandText.Split(' '));
+                        int loopStartPosition = programBox.GetLineFromCharIndex(programBox.Text.IndexOf("while"));
+
+                        // Set the condition using CommandParser.SetCondition
+                        CommandParser.SetCondition(whileCondition);
+
+                        // Set the flag to indicate whether in the while block
+                        inWhileBlock = whileCondition;
+
+                        // Loop only if the condition is currently true
+                        while (inWhileBlock && whileCondition)
+                        {
+                            // Execute each command within the while block
+                            for (int i = loopStartPosition + 1; i < programBox.Lines.Length; i++)
+                            {
+                                string line = programBox.Lines[i];
+
+                                // Break the loop if encountering "endloop"
+                                if (line.Trim().ToLower() == "endloop")
+                                    break;
+
+                                // Skip execution if not in the while block or condition is false
+                                if (!inWhileBlock || !whileCondition)
+                                    break;
+
+                                // If the condition becomes false during execution, break out of the loop
+                                if (!CommandParser.EvaluateCondition(commandText.Split(' ')))
+                                {
+                                    inWhileBlock = false;
+                                    break;
+                                }
+                                Run(line);
+                            }
+                        }
+                        break;
+
+                    case commands.EndLoop:
+                        // The EndLoop command is handled inside the While case
+                        inWhileBlock = false;
                         break;
 
                     case commands.Invalid:
