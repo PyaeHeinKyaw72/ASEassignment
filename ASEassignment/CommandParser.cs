@@ -44,6 +44,12 @@ namespace ASEassignment
         /// For variable assignment
         VariableAssignment,
 
+        /// Command to start an 'if' condition.
+        If,
+
+        /// To end an 'if' condition.
+        EndIf,
+
         /// For invalid command
         Invalid
     }
@@ -52,6 +58,16 @@ namespace ASEassignment
     public class CommandParser
     {
         public static Dictionary<string, int> assignedVariables { get; private set; } = new Dictionary<string, int>();
+        private static bool condition = true;
+        internal static bool GetCondition()
+        {
+            return condition;
+        }
+
+        public static void SetCondition(bool value)
+        {
+            condition = value;
+        }
 
         /// <param name="input">The input command string.</param>
         /// <param name="x">The X-coordinate value.</param>
@@ -213,6 +229,14 @@ namespace ASEassignment
                             return commands.VariableAssignment;
                         }
                         break;
+
+                    case "if":
+                        condition = EvaluateCondition(command);
+                        return commands.If;
+
+                    case "endif":
+                        condition = true;
+                        return commands.EndIf;
                 }
             }
 

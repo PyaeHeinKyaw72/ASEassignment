@@ -322,5 +322,45 @@ namespace UnitTest
             Assert.AreEqual(expectedX, drawingTool.penLocation.X);
             Assert.AreEqual(expectedY, drawingTool.penLocation.Y);
         }
+
+        [TestMethod]
+        public void IfEndif_Test()
+        {
+            // Arrange
+            DrawingTool drawingTool = new DrawingTool(new Panel());
+            RichTextBox richTextBox = new RichTextBox();
+            Command command = new Command(drawingTool, richTextBox);
+
+            // Expected pen position if the condition is true
+            int expectedXtrue = 10;
+            int expectedYtrue = 20;
+
+            // Expected pen position if the condition is false
+            int expectedXfalse = 30;
+            int expectedYfalse = 40;
+
+            // Act
+            command.RunProgram("let a = 10");
+            command.RunProgram("if a == 10");
+            command.RunProgram("moveto 10,20");
+            command.RunProgram("endif");
+
+            // Assert
+            // Check if the pen's position is correctly moved to the location
+            Assert.AreEqual(expectedXtrue, drawingTool.penLocation.X);
+            Assert.AreEqual(expectedYtrue, drawingTool.penLocation.Y);
+
+            // Execute the program again
+            // Act
+            command.RunProgram("let a = 9");
+            command.RunProgram("if a == 10");
+            command.RunProgram("moveto 10,20");
+            command.RunProgram("endif");
+            command.RunProgram("moveto 30,40");
+
+            // Check if the pen's position is correctly moved to the location
+            Assert.AreEqual(expectedXfalse, drawingTool.penLocation.X);
+            Assert.AreEqual(expectedYfalse, drawingTool.penLocation.Y);
+        }
     }
 }

@@ -34,6 +34,10 @@ namespace ASEassignment
             commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height, out int radius, out Color penColor, out bool colorFillEnabled, out string variableName);
             try
             {
+                // Check if the condition is false and the command is not an EndIf, skip the execution
+                if (!CommandParser.GetCondition() && CommandType != commands.EndIf)
+                    return;
+
                 switch (CommandType)
                 {
                     case commands.DrawTo:
@@ -69,6 +73,13 @@ namespace ASEassignment
 
                     case commands.Reset:
                         drawingTool.ResetPosition();
+                        break;
+
+                    case commands.If:
+                        CommandParser.SetCondition(CommandParser.EvaluateCondition(commandText.Split(' ')));
+                        break;
+                    case commands.EndIf:
+                        CommandParser.SetCondition(true);
                         break;
 
                     case commands.Invalid:
