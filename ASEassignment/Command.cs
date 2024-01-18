@@ -31,7 +31,7 @@ namespace ASEassignment
                 return;
             }
 
-            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height, out int radius, out Color penColor, out bool colorFillEnabled);
+            commands CommandType = CommandParser.parseCommand(commandText, out int x, out int y,out int width, out int height, out int radius, out Color penColor, out bool colorFillEnabled, out string variableName);
             try
             {
                 switch (CommandType)

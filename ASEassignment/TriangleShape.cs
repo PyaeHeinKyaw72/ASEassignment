@@ -35,7 +35,7 @@ namespace ASEassignment
         public override void Draw(Graphics graphics)
         {
             // Create a pen with the specified color and width
-            using (var pen = new Pen(color, 3))
+            using (var pen = new Pen(color,3))
             {
                 // Draw the three sides of the triangle
                 graphics.DrawLine(pen, p1, p2);

@@ -298,5 +298,29 @@ namespace UnitTest
             // Assert
             Assert.AreEqual(newColorFillStatus, drawingTool.ColorFillEnabled);
         }
+
+        [TestMethod]
+        public void Variable_Test()
+        {
+            // Arrange
+            DrawingTool drawingTool = new DrawingTool(new Panel());
+            RichTextBox richTextBox = new RichTextBox();
+            Command command = new Command(drawingTool, richTextBox);
+
+
+            // Expected pen position
+            int expectedX = 10;
+            int expectedY = 20;
+
+            // Act
+            command.RunProgram("let a = 10");
+            command.RunProgram("let b = a+10");
+            command.RunProgram("moveto a,b");
+
+            // Assert
+            // Check if the pen's position is correctly moved to the location
+            Assert.AreEqual(expectedX, drawingTool.penLocation.X);
+            Assert.AreEqual(expectedY, drawingTool.penLocation.Y);
+        }
     }
 }

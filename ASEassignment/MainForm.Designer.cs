@@ -65,7 +65,7 @@
             // 
             this.drawingPanel.BackColor = System.Drawing.SystemColors.GrayText;
             this.drawingPanel.ForeColor = System.Drawing.Color.Black;
-            this.drawingPanel.Location = new System.Drawing.Point(436, 42);
+            this.drawingPanel.Location = new System.Drawing.Point(436, 41);
             this.drawingPanel.Name = "drawingPanel";
             this.drawingPanel.Size = new System.Drawing.Size(348, 392);
             this.drawingPanel.TabIndex = 4;

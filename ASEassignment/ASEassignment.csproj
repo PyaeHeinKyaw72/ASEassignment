@@ -49,7 +49,9 @@
     <Compile Include="CircleShape.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandParser.cs" />
+    <Compile Include="ConditionEvaluator.cs" />
     <Compile Include="DrawingTool.cs" />
+    <Compile Include="ExpressionEvaluator.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
